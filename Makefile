@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+         #
+#    By: murachid <murachid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/12 13:27:28 by rel-bour          #+#    #+#              #
-#    Updated: 2021/12/06 23:46:38 by rel-bour         ###   ########.fr        #
+#    Updated: 2021/12/07 19:49:48 by murachid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-CC = gcc  -lreadline -ledit -g  #-L /goinfre/murachid/.brew/opt/readline/lib -I /goinfre/murachid/.brew/opt/readline/include
+CC = gcc  -lreadline -ledit -g  -L /goinfre/murachid/.brew/opt/readline/lib -I /goinfre/murachid/.brew/opt/readline/include
 #  -fsanitize=address
 CFLAGS = #-Wall -Wextra -Werror   
 

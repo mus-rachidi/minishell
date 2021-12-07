@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 13:25:01 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/06 23:46:45 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/07 19:49:59 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,22 @@ void	ft_tow(int numofsig)
 {
 	char	*buffer;
 
-	// if (numofsig == SIGINT)
-	// {
-	// 	buffer = ft_strdup(rl_line_buffer);
-	// 	rl_on_new_line();
-	// 	rl_replace_line("", 1);
-	// 	rl_redisplay();
-	// 	write(2, buffer, ft_strlen(buffer));
-	// 	write(2, "   \nUser@minishell>", 21);
-	// 	free(buffer);
-	// }
-	// if (numofsig == SIGQUIT)
-	// {
-	// 	rl_on_new_line();
-	// 	rl_redisplay();
-	// 	write(2, "  \b\b", 4);
-	// }
+	if (numofsig == SIGINT)
+	{
+		buffer = ft_strdup(rl_line_buffer);
+		rl_on_new_line();
+		rl_replace_line("", 1);
+		rl_redisplay();
+		write(2, buffer, ft_strlen(buffer));
+		write(2, "   \nUser@minishell>", 21);
+		free(buffer);
+	}
+	if (numofsig == SIGQUIT)
+	{
+		rl_on_new_line();
+		rl_redisplay();
+		write(2, "  \b\b", 4);
+	}
 }
 
 void	sig_handler(int numofsig)
@@ -77,8 +77,8 @@ int	main(int ac, char **av, char **envs)
 	fl = init_stuct();
 	list_envs(envs);
 	
-	// signal(SIGINT, sig_handler);
-	// signal(SIGQUIT, sig_handler);
+	signal(SIGINT, sig_handler);
+	signal(SIGQUIT, sig_handler);
 	while (1)
 	{
 		fl->stop = 1;

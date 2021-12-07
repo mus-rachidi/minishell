@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executing_head.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 12:24:47 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/06 23:41:51 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/07 19:43:48 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_pipex
 	int		fd;
 	char	**path_split;
 }t_pipex;
+void				free_and_wait(t_node *head);
+void				free_arg(t_cmds *tmp1);
 void				freelist(t_node* head);
 int					my_ft_strchr(char *s);
 void				message_print(char *s, char *str);
