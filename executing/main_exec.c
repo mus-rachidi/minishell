@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 10:15:57 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/08 15:44:19 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/08 22:33:44 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_fork(t_cmds *tmp1, char **envs, t_fd *fd, int i)
 	else if (pid == 0)
 		ft_child(tmp1, envs, fd, i);
 	close(fd->fd_pipe[1]);
-	if (i == 1 && !tmp1->next_cmd)
+	if (i > 1 || (i == 1 && !ft_strcmp(tmp1->type, "exit")))
 		exec_built(tmp1);
 }
 
@@ -63,6 +63,12 @@ void	ft_util(t_node	*head)
 	data = init_stuct();
 	free_and_wait(head);
 	data->s_code = mywrite();
+	mywrite_int();
+}
+
+void ft_util_one(void)
+{
+	wait(NULL);
 	mywrite_int();
 }
 
@@ -84,12 +90,15 @@ void	exec_cmd_test(t_cmds *cmds, char **envs)
 			exit(1);
 		i++;
 		ft_fork(tmp1, envs, &fd, i);
+	
 		str_error = ft_check_two(tmp1);
 		head = insertfirst(str_error, head);
 		free_arg(tmp1);
 		if (fd.p)
 			close(fd.p);
 		fd.p = fd.fd_pipe[0];
+		if (tmp1->next_cmd)
+			ft_util_one();
 		tmp1 = tmp1->next_cmd;
 	}
 	ft_util(head);

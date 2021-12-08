@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 14:14:41 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/08 15:56:01 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/08 16:01:33 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	exec_cmd(t_cmds *cmd, char *envs[])
 {
 	if ((!ft_strncmp(".", cmd->type, 1)
 			|| !ft_strncmp("/", cmd->type, 1)) && access(cmd->type, F_OK))
-		message_print(cmd->type, " No such file or directory\n", 126);
+		message_print(cmd->type, " No such file or directory\n", 127);
 	else if (!ft_strcmp("./", cmd->type) || !ft_strcmp("../", cmd->type))
 		message_print(cmd->type, " is a directory\n", 126);
 	else if (!ft_strncmp("./", cmd->type, 2) && !access(cmd->type, F_OK))

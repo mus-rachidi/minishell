@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 13:25:01 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/08 14:48:57 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/08 21:48:14 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,13 @@ int	main(int ac, char **av, char **envs)
 	av = NULL;
 	fl = init_stuct();
 	list_envs(envs);
-	int fd = open("/tmp/s_code", O_CREAT | O_WRONLY | O_TRUNC, 0666);
+	int fd = open("/tmp/s_code", O_CREAT | O_WRONLY , 0666);
 	// signal(SIGINT, sig_handler);
 	// signal(SIGQUIT, sig_handler);
 	while (1)
 	{
 		fl->stop = 1;
+		// fl->s_code = 0;
 		main_parsing(envs);
 	}
 	return (0);
