@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 12:24:47 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/07 19:43:48 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/08 15:37:19 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,16 @@ typedef struct s_pipex
 	int		fd;
 	char	**path_split;
 }t_pipex;
+int					mywrite(void);
+void				mywrite_int(void);
+void				rest_buffer(void);
+void				message_print_red(char *s, char *str, int exit_error);
+void				message_print_export(char *s, int exit_error);
+void				message_print(char *s, char *str, int error);
 void				free_and_wait(t_node *head);
 void				free_arg(t_cmds *tmp1);
-void				freelist(t_node* head);
+void				freelist(t_node *head);
 int					my_ft_strchr(char *s);
-void				message_print(char *s, char *str);
-void				ft_join(t_pipex *pipex, char *cmd);
 t_node				*insertfirst(char *data, t_node *head);
 void				printlist(t_node *head);
 void				ft_check_exit(t_cmds *tmp1);

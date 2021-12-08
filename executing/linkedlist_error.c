@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linkedlist_error.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 12:13:01 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/06 22:33:16 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/08 15:22:52 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ void	printlist(t_node *head)
 	while (ptr != NULL)
 	{
 		if (ptr->data)
-			printf("minishell : %s", ptr->data);
+			message_print_red("", ptr->data, 1);
 		ptr = ptr->next;
 	}
 }
+
 t_node	*insertfirst(char *data, t_node *head)
 {
 	t_node	*link;

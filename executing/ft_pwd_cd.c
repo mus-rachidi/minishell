@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 15:28:04 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/05 11:58:50 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/08 15:27:33 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	exe_cd(t_cmds *tmp)
 	{	
 		temp = search("HOME", temp);
 		if (!temp)
-			printf("minishell: cd: HOME not set\n");
+			message_print_red("", "cd: HOME not set\n", 1);
 		else
 		{
 			if (chdir(temp->data) == -1)
@@ -29,7 +29,7 @@ void	exe_cd(t_cmds *tmp)
 		}
 	}
 	else if (chdir(tmp->arguments[0]) == -1)
-		print_error(tmp->arguments[0], " No such file or directory\n");
+		message_print_red(tmp->arguments[0], " No such file or directory\n", 1);
 }
 
 void	exe_pwd(void)

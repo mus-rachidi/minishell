@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 10:15:57 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/07 19:42:29 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/08 15:44:19 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,16 @@ void	ft_fork(t_cmds *tmp1, char **envs, t_fd *fd, int i)
 		exec_built(tmp1);
 }
 
+void	ft_util(t_node	*head)
+{
+	t_cmds	*data;
+
+	data = init_stuct();
+	free_and_wait(head);
+	data->s_code = mywrite();
+	mywrite_int();
+}
+
 void	exec_cmd_test(t_cmds *cmds, char **envs)
 {
 	t_cmds		*tmp1;
@@ -82,5 +92,5 @@ void	exec_cmd_test(t_cmds *cmds, char **envs)
 		fd.p = fd.fd_pipe[0];
 		tmp1 = tmp1->next_cmd;
 	}
-	free_and_wait(head);
+	ft_util(head);
 }

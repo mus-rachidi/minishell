@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec_utile.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 16:13:18 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/06 22:31:57 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/08 15:33:33 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,6 @@ int	my_ft_strchr(char *s)
 		i++;
 	}
 	return (0);
-}
-
-void	message_print(char *s, char *str)
-{
-	print_error(s, str);
-	exit(0);
 }
 
 void	ft_join(t_pipex *pipex, char *cmd)
@@ -51,14 +45,11 @@ void	ft_join(t_pipex *pipex, char *cmd)
 		if (pipex->fd != -1)
 			break ;
 		else
-		{
 			free(pipex->bin);
-			pipex->bin = NULL;
-		}
 		i++;
 	}
 	if (pipex->fd == -1)
-		message_print(cmd, ": command not found\n");
+		message_print(cmd, ": command not found\n", 127);
 }
 
 int	stop(void)

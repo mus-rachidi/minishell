@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 12:43:57 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/05 16:36:59 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/07 23:43:14 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_data_item
 	char				*key;
 	struct s_data_item	*next;
 }t_data_item;
+
 t_data_item	*g_hasharray[SIZE];
 
 struct	s_data_item	*search(char *key, struct s_data_item *temp);

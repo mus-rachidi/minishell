@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 13:02:10 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/06 23:38:05 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/08 15:41:35 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@ char	*valeu_export(char *tmp)
 	else
 		return (NULL);
 	t = tmp;
-	// t = ft_split(tmp, '=');
-	// tmp1 = ft_strdup(t[0]);
-	// free_array(t);
 	return (t);
 }
 
@@ -38,12 +35,12 @@ int	error_export(char *key, char *arg)
 	i = 0;
 	if (!key)
 	{
-		printf("minishell: export: `%s': not a valid identifier\n", arg);
+		message_print_export(arg, 1);
 		return (1);
 	}
 	if (key[i] != '_' && (ft_isalpha(key[i]) == 0))
 	{
-		printf("minishell: export: `%s': not a valid identifier\n", arg);
+		message_print_export(arg, 1);
 		return (1);
 	}
 	i++;
@@ -53,7 +50,7 @@ int	error_export(char *key, char *arg)
 			i++;
 		else
 		{
-			printf("minishell: export: `%s': not a valid identifier\n", arg);
+			message_print_export(arg, 1);
 			return (1);
 		}
 	}
@@ -64,6 +61,7 @@ char	*key_export(char *tmp)
 {
 	char	**t;
 	char	*tmp1;
+
 	if (tmp)
 	{
 		t = ft_split(tmp, '=');
@@ -116,8 +114,6 @@ void	exe_export(t_cmds *tmp, struct s_data_item *temp)
 			export_util(d, data, key);
 			free(key);
 		}
-		
 		i++;
 	}
-	
 }

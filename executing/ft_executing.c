@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 14:14:41 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/05 16:31:48 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/08 15:56:01 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,8 @@ char	*ft_path_util(t_pipex *pipex, char *a, char *cmd)
 		return (pipex->bin);
 	}
 	else if (!cmd && !a)
-	{
-		perror("minishell");
-		exit(1);
-	}
-	else
-		exit(0);
+		message_print(cmd, ": No such file or directory\n", 127);
+	return (NULL);
 }
 
 char	*ft_path(char *cmd, char *a)
@@ -51,8 +47,8 @@ char	*ft_path(char *cmd, char *a)
 	}
 	if (!temp)
 	{
-		perror("minishell");
-		exit(1);
+		message_print(cmd, ": No such file or directory\n", 127);
+		return (NULL);
 	}
 	else
 		return (ft_path_util(&pipex, a, cmd));
@@ -68,7 +64,7 @@ void	exute_f(t_cmds *cmd, char *envs[])
 	if (!access(cmd->type, F_OK) && !ft_strncmp(cmd->type, "/", 1))
 	{
 		if (execve(cmd->type, cmd->all, envs))
-			message_print(cmd->type, " is a directory\n");
+			message_print(cmd->type, " is a directory\n", 127);
 		else
 			exit(0);
 	}
@@ -84,13 +80,13 @@ void	exec_cmd(t_cmds *cmd, char *envs[])
 {
 	if ((!ft_strncmp(".", cmd->type, 1)
 			|| !ft_strncmp("/", cmd->type, 1)) && access(cmd->type, F_OK))
-		message_print(cmd->type, " No such file or directory\n");
-	if (!ft_strcmp("./", cmd->type) || !ft_strcmp("../", cmd->type))
-		message_print(cmd->type, " is a directory\n");
-	if (!ft_strncmp("./", cmd->type, 2) && !access(cmd->type, F_OK))
+		message_print(cmd->type, " No such file or directory\n", 126);
+	else if (!ft_strcmp("./", cmd->type) || !ft_strcmp("../", cmd->type))
+		message_print(cmd->type, " is a directory\n", 126);
+	else if (!ft_strncmp("./", cmd->type, 2) && !access(cmd->type, F_OK))
 	{
 		if (execve(cmd->type, cmd->all, envs) && !access(cmd->type, X_OK))
-			message_print(cmd->type, " Permission denied\n");
+			message_print(cmd->type, " Permission denied\n", 1);
 		else
 			exit(0);
 	}
