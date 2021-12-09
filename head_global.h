@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 12:43:57 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/09 20:10:01 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:06:24 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h> 
-# include <string.h>
 # include <signal.h>
 # include <fcntl.h>
 # include <sys/wait.h> 

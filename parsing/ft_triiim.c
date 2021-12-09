@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 05:14:29 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/05 10:34:51 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:12:50 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ char	*ft_strtrim_space(char const *s1, char const *set)
 	int		i;
 
 	if (!s1 || !set)
-		return (strdup(""));
+		return (ft_strdup(""));
 	start = 0;
-	end = strlen(s1);
+	end = ft_strlen(s1);
 	if (end == 0)
-		return (strdup(""));
+		return (ft_strdup(""));
 	i = 0;
 	while (fthelp(s1[start], set))
 		start++;

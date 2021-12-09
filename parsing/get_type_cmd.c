@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:21:31 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/09 21:39:21 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:11:31 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ char	*get_type_cmnd_ifred_half(char	**split, char **str)
 	type = NULL;
 	tmp_if = type_ifred_else(str, type, split);
 	if (tmp_if && tmp_if[1])
-		type = strdup(tmp_if[1]);
+		type = ft_strdup(tmp_if[1]);
 	else
-		type = strdup("");
+		type = ft_strdup("");
 	if (tmp_if)
 		free_array(tmp_if);
 	return (type);
@@ -80,9 +80,9 @@ char	*get_type_cmnd_ifred(char *line, char **str, int nbr)
 	{
 		tmp = get_type_cmnd(line);
 		if (type && tmp[0])
-			type = strdup(tmp[0]);
+			type = ft_strdup(tmp[0]);
 		else
-			type = strdup("");
+			type = ft_strdup("");
 		if (tmp)
 			free_array(tmp);
 	}

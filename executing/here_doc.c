@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 10:45:48 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/09 21:18:26 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:12:41 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	file_descriptor(t_cmds *cmds, int zero, int i)
 	while (fl->stop)
 	{
 		s = readline("> ");
-		if (!s || !strcmp(s, tmp1->redrctions->org_name))
+		if (!s || !ft_strcmp(s, tmp1->redrctions->org_name))
 		{
 			free_one(s);
 			break ;

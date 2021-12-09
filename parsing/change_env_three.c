@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   change_env_three.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 11:43:00 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/09 18:24:37 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:12:14 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*tmp_change_qots(char *str, int *j)
 
 void	init_some_var_halfqts(char *str, int *j, char **r, char **t)
 {
-	*r = strdup("");
+	*r = ft_strdup("");
 	*t = tmp_change_qots(str, j);
 }
 
@@ -47,11 +47,11 @@ char	*ret_change_env_qts(t_env_no_qts evq, int *j, char *str, int j2)
 	evq.temp = evq.tmp;
 	evq.tmp = ft_strjoin(evq.tmp, evq.data);
 	free(evq.temp);
-	evq.s = ft_substr(str, (*j), strlen((str + (*j))));
+	evq.s = ft_substr(str, (*j), ft_strlen((str + (*j))));
 	evq.temp = evq.tmp;
 	evq.tmp = ft_strjoin(evq.tmp, evq.s);
 	free(evq.temp);
-	(*j) = (j2 + (strlen(evq.data)));
+	(*j) = (j2 + (ft_strlen(evq.data)));
 	free(evq.ret);
 	free(evq.s);
 	free(str);
@@ -101,11 +101,11 @@ char	*ret_chng_env(t_env_no_qts ev, int *j, char *str, int j2)
 	ev.temp = ev.tmp;
 	ev.tmp = ft_strjoin(ev.tmp, ev.data);
 	free(ev.temp);
-	ev.s = ft_substr(str, (*j), strlen((str + (*j))));
+	ev.s = ft_substr(str, (*j), ft_strlen((str + (*j))));
 	ev.temp = ev.tmp;
 	ev.tmp = ft_strjoin(ev.tmp, ev.s);
 	free(ev.temp);
-	(*j) = (j2 + (strlen(ev.data) - 1));
+	(*j) = (j2 + (ft_strlen(ev.data) - 1));
 	free(ev.ret);
 	if (ev.data_alloc == 1)
 		free(ev.data);

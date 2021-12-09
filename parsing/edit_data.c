@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 09:45:30 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/06 00:13:26 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:11:31 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	is_ambiguous(char *str)
 	{
 		if (str[i] && (ft_isalpha(str[i]) || str[i] == '_'))
 		{
-			ret = strdup("");
+			ret = ft_strdup("");
 			while (str[i] && (ft_isalnum(str[i]) || str[i] == '_'))
 			{
 				temp = ret;
@@ -46,12 +46,12 @@ t_filerdr	*if_initial_red(t_filerdr *add_tmp, char **str)
 	t_cmds		*fl;
 
 	fl = init_stuct();
-	add_tmp->org_name = strdup(fl->filenames[fl->i_fl]);
+	add_tmp->org_name = ft_strdup(fl->filenames[fl->i_fl]);
 	add_tmp->ambiguous = is_ambiguous(fl->filenames[fl->i_fl]);
 	fl->i_fl++;
-	add_tmp->all = strdup(str[1]);
+	add_tmp->all = ft_strdup(str[1]);
 	tmp_name = get_filename(str[1]);
-	add_tmp->name = strdup(tmp_name[0]);
+	add_tmp->name = ft_strdup(tmp_name[0]);
 	free_array(tmp_name);
 	add_tmp->type = get_type_red(str[1]);
 	add_tmp->next = NULL;

@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:22:35 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/05 10:35:23 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:10:58 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_syntax(char *s)
 	while (s[i] && s[i] == ' ')
 		i++;
 	s = ft_strtrim_space(s, " ");
-	if (strlen(s) == 0)
+	if (ft_strlen(s) == 0)
 	{
 		free(s);
 		s = NULL;

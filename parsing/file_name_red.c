@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:37:16 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/06 00:12:25 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:12:14 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ char	**join2d_filenames(char **args, char *s)
 	i = 0;
 	while (i < (len_array(args)))
 	{
-		ret[i] = strdup(args[i]);
+		ret[i] = ft_strdup(args[i]);
 		i++;
 	}
 	if (!s)
-		ret[i] = strdup("");
+		ret[i] = ft_strdup("");
 	else
-		ret[i] = strdup(s);
+		ret[i] = ft_strdup(s);
 	i++;
 	ret[i] = NULL;
 	return (ret);
@@ -39,7 +39,7 @@ int	sytax_red_double(char *str)
 	int	len;
 
 	i = 0;
-	while ((unsigned int)i < (strlen(str) - 1))
+	while ((unsigned int)i < (ft_strlen(str) - 1))
 	{
 		len = 0;
 		if (str[i] == '"')

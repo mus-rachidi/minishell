@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:22:07 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/05 10:34:38 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:11:31 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_cmds	*data_if_not_red(t_cmds *test)
 	char	**type;
 
 	type = get_type_cmnd(test->command);
-	test->type = strdup(type[0]);
+	test->type = ft_strdup(type[0]);
 	free_array(type);
 	test->arguments = get_args(test->command);
 	test->redrctions = NULL;
@@ -77,9 +77,9 @@ t_filerdr	*init_header_list_rd(t_filerdr *org_list, int p, char **str)
 	add_tmp = org_list;
 	if (p == 1)
 	{
-		add_tmp->all = strdup(str[p]);
+		add_tmp->all = ft_strdup(str[p]);
 		tmp_name = get_filename(str[p]);
-		add_tmp->name = strdup(tmp_name[0]);
+		add_tmp->name = ft_strdup(tmp_name[0]);
 		free_array(tmp_name);
 		add_tmp->type = get_type_red(str[p]);
 		add_tmp->next = NULL;
@@ -95,12 +95,12 @@ t_filerdr	*new_red_list(char *str)
 
 	for_filename = init_stuct();
 	tmp = red_alloc(1);
-	tmp->org_name = strdup(for_filename->filenames[for_filename->i_fl]);
+	tmp->org_name = ft_strdup(for_filename->filenames[for_filename->i_fl]);
 	tmp->ambiguous = is_ambiguous(for_filename->filenames[for_filename->i_fl]);
 	for_filename->i_fl++;
-	tmp->all = strdup(str);
+	tmp->all = ft_strdup(str);
 	tmp_name = get_filename(str);
-	tmp->name = strdup(tmp_name[0]);
+	tmp->name = ft_strdup(tmp_name[0]);
 	free_array(tmp_name);
 	tmp->type = get_type_red(str);
 	tmp->next = NULL;

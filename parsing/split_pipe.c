@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:22:16 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/05 10:35:14 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:11:04 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	**split_one_cmnd(void)
 
 	str = char_dbl_alloc(3);
 	data = init_stuct();
-	str[0] = strdup(data->line);
+	str[0] = ft_strdup(data->line);
 	str[1] = NULL;
 	return (str);
 }

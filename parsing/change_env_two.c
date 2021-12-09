@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 12:48:04 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/06 00:15:12 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:12:14 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*status_env_ret_qts(char *tmp, char *str, int j)
 	tmp = ft_strjoin(tmp, case_str);
 	free(case_str);
 	free(temp);
-	s = ft_substr(str, (j), strlen((str + (j))));
+	s = ft_substr(str, (j), ft_strlen((str + (j))));
 	temp = tmp;
 	tmp = ft_strjoin(tmp, s);
 	free(temp);
@@ -47,7 +47,7 @@ char	*status_env_ret(char *tmp, char *str, int j)
 	tmp = ft_strjoin(tmp, case_str);
 	free(case_str);
 	free(temp);
-	s = ft_substr(str, (j), strlen((str + (j))));
+	s = ft_substr(str, (j), ft_strlen((str + (j))));
 	temp = tmp;
 	tmp = ft_strjoin(tmp, s);
 	free(temp);
@@ -67,7 +67,7 @@ char	*ifqt_schange_env_while(int *j, char *str)
 
 char	*change_env_while(char *str, int j, int j2)
 {
-	while ((unsigned int)j < (strlen(str) - 1))
+	while ((unsigned int)j < (ft_strlen(str) - 1))
 	{
 		if (!str[j])
 			break ;

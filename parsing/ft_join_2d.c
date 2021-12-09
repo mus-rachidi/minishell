@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:20:55 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/05 10:34:45 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:11:31 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ char	**join2d(char **args, char *s)
 	i = 0;
 	while (i < (len_array(args)))
 	{
-		ret[i] = strdup(args[i]);
+		ret[i] = ft_strdup(args[i]);
 		i++;
 	}
 	if (!s)
-		ret[i] = strdup("");
+		ret[i] = ft_strdup("");
 	else
-		ret[i] = strdup(s);
+		ret[i] = ft_strdup(s);
 	i++;
 	ret[i] = NULL;
 	free_array(args);

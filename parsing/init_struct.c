@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 11:51:31 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/05 10:34:59 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:11:31 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_cmds	*new_node(char *str)
 	t_cmds	*tmp;
 
 	tmp = cmd_alloc(1);
-	tmp->command = strdup(str);
+	tmp->command = ft_strdup(str);
 	tmp->type = NULL;
 	tmp->arguments = NULL;
 	tmp->all = NULL;
@@ -58,7 +58,7 @@ void	init_linkedlist(char **str)
 	{
 		if (i == 0)
 		{
-			tmp->command = strdup(str[i]);
+			tmp->command = ft_strdup(str[i]);
 			tmp->type = NULL;
 			tmp->arguments = NULL;
 			tmp->all = NULL;

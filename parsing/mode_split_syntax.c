@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:09:01 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/05 23:59:05 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:11:31 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	**split_mode_half(char *str, int i, char **ret)
 			while (str[i] && (str[i] == '>' || str[i] == '<'))
 				i++;
 			j++;
-			ret[j] = strdup("");
+			ret[j] = ft_strdup("");
 		}
 		else
 			ret[j] = else_split_mode_half(ret[j], &i, str[i]);
@@ -105,7 +105,7 @@ char	**split_mode(char *str)
 	ret = alloc_split_mode(ret, str);
 	i = 0;
 	j = 0;
-	ret[0] = strdup("");
+	ret[0] = ft_strdup("");
 	str = ft_strtrim_space(str, " ");
 	return (split_mode_half(str, i, ret));
 }

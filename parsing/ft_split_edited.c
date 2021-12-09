@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:21:09 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/06 00:12:01 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:11:31 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char	**org_split_typecmd_half(char *str, char c, int i, char **ret)
 			while (str[i] && str[i] == ' ')
 				i++;
 			j++;
-			ret[j] = strdup("");
+			ret[j] = ft_strdup("");
 		}
 		else
 			ret[j] = else_org_split_typecmd_half(ret[j], &i, str[i]);
@@ -110,7 +110,7 @@ char	**edited_split(char *str, char c)
 	ret = org_alloc_ret_split(ret, str, c);
 	i = 0;
 	j = 0;
-	ret[0] = strdup("");
+	ret[0] = ft_strdup("");
 	str = ft_strtrim_space(str, " ");
 	while (str && str[i] == ' ')
 		i++;

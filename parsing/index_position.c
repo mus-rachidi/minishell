@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 09:27:05 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/06 22:51:25 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:11:31 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char	*ret_change_env_half_qots(char *str, int *j)
 	char	*temp;
 	char	*ret;
 
-	ret = strdup("");
+	ret = ft_strdup("");
 	temp = ret;
 	ret = strjoin1(ret, str[*j]);
 	free(temp);

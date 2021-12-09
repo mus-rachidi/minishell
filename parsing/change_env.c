@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   change_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 21:58:28 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/08 00:02:19 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:11:31 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*tmp_change_env_no_qots(char *str, int *j)
 
 void	init_some_var(char *str, int *j, char **r, char **t)
 {
-	*r = strdup("");
+	*r = ft_strdup("");
 	*t = tmp_change_env_no_qots(str, j);
 }
 

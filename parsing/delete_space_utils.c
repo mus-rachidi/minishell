@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:24:21 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/06 00:13:36 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:11:31 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	**split_plus_elsen(int *i, char *str, int *j, char **ret)
 	if (str[*i])
 	{
 		(*j)++;
-		ret[*j] = strdup("");
+		ret[*j] = ft_strdup("");
 	}
 	return (ret);
 }

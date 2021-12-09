@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 12:44:43 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/05 10:40:35 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:12:28 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*addqouts(char *s)
 	char	*tmp;
 
 	i = 0;
-	ret = strdup("");
+	ret = ft_strdup("");
 	tmp = ret;
 	ret = strjoin1(ret, '\'');
 	free(tmp);
@@ -69,7 +69,7 @@ int	while_plus(int j, char *str, int *j2)
 
 int	is_there_option(char *type, char **arg)
 {
-	if (!strcmp(type, "echo"))
+	if (!ft_strcmp(type, "echo"))
 	{
 		if (valid_echo_option(arg[0]))
 			return (1);
