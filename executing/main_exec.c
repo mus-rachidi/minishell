@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 10:15:57 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/09 12:27:07 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 18:20:34 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_child(t_cmds *tmp1, char **envs, t_fd *fd, int i)
 		close(fd->fd_out);
 	close(fd->fd_pipe[0]);
 	exec_built_second(tmp1);
-	if (i == 1 && !tmp1->next_cmd)
+	if (i > 1 && !tmp1->next_cmd)
 		exec_built(tmp1);
 	ft_executing_in_child(tmp1, envs);
 }
@@ -38,7 +38,6 @@ void	ft_fork(t_cmds *tmp1, char **envs, t_fd *fd, int i)
 {
 	pid_t	pid;
 	int		status;
-	int		a;
 
 	status = 0;
 	pid = 0;
@@ -52,7 +51,7 @@ void	ft_fork(t_cmds *tmp1, char **envs, t_fd *fd, int i)
 	else if (pid == 0)
 		ft_child(tmp1, envs, fd, i);
 	close(fd->fd_pipe[1]);
-	if (i > 1 || (i == 1 && !ft_strcmp(tmp1->type, "exit")))
+	if (i == 1 || (i == 1 && !ft_strcmp(tmp1->type, "exit")))
 		exec_built(tmp1);
 }
 
@@ -66,7 +65,7 @@ void	ft_util(t_node	*head)
 	mywrite_int();
 }
 
-void ft_util_one(void)
+void	ft_util_one(void)
 {
 	mywrite_int();
 }

@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 11:43:00 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/08 00:01:22 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 18:24:37 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 char	*ft_getenv(char *s)
 {
-	struct	s_data_item *p;
+	struct s_data_item	*p;
+
+	p = NULL;
 	p = search(s, p);
 	if (!p)
 		return (NULL);

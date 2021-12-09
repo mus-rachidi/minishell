@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:20:00 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/09 01:27:39 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 18:23:48 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	start_parsing(char **envs)
 int	main_parsing(char **envs)
 {
 	t_cmds	*data;
-	
+
 	data = init_stuct();
 	data->i_fl = 0;
 	data->filenames = NULL;

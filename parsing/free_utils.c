@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 08:56:01 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/06 22:54:56 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 18:23:59 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,6 @@ void	clear_list(t_cmds *tmp)
 		free(tmp->command);
 		tmp->command = NULL;
 	}
-	// while (tmp->arguments && tmp->arguments[j])
-	// {
-	// 	free(tmp->arguments[j]);
-	// 	tmp->arguments[j] = NULL;
-	// 	j++;
-	// }
 	clear_list_half(tmp, j);
 }
 

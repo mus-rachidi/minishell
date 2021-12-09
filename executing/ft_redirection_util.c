@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 12:06:32 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/09 11:31:06 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 18:19:31 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_append_output(t_cmds *tmp1, t_fd *fd)
 				O_WRONLY | O_CREAT | O_APPEND, 0777);
 }
 
-void	ft_here_doc(t_cmds *tmp1, t_fd *fd, int zero)
+void	ft_here_doc(t_cmds *tmp1, t_fd *fd, int zero, int i)
 {
-	fd->fd_int = file_descriptor(tmp1, zero);
+	fd->fd_int = file_descriptor(tmp1, zero, i);
 }

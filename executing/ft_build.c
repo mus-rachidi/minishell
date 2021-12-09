@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 14:11:29 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/08 23:23:01 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 18:10:48 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ int	test_built_cmd(t_cmds *tmp)
 	return (0);
 }
 
-int ft_serch_char(t_cmds *tmp)
+int	ft_serch_char(t_cmds *tmp)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	if(tmp->arguments[0][i] == '+' || tmp->arguments[0][i] == '-')
+	if (tmp->arguments[0][i] == '+' || tmp->arguments[0][i] == '-')
 		i++;
 	while (tmp->arguments[0][i] != '\0')
 	{
@@ -61,22 +61,23 @@ int ft_serch_char(t_cmds *tmp)
 	return (0);
 }
 
-void ft_exit_utile(t_cmds *tpm)
+void	ft_exit_utile(t_cmds *tpm)
 {
-	unsigned char i;	
-	
-	if(!tpm->arguments[0])
+	unsigned char	i;
+
+	if (!tpm->arguments[0])
 		exit(EXIT_SUCCESS);
-	if(!ft_serch_char(tpm) && tpm->arguments[1])
+	if (!ft_serch_char(tpm) && tpm->arguments[1])
 	{
-		message_print_red(tpm->arguments[0]," too many arguments\n", 1);
+		message_print_red(tpm->arguments[0], " too many arguments\n", 1);
 	}
 	else if (ft_serch_char(tpm))
 	{
-		message_print_red(tpm->arguments[0]," numeric argument required\n", 255);
+		message_print_red(tpm->arguments[0],
+			" numeric argument required\n", 255);
 		exit(255);
 	}
-	else 
+	else
 	{
 		i = (unsigned char)ft_atoi(tpm->arguments[0]);
 		exit(i);
