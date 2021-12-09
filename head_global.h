@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   head_global.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 12:43:57 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/09 18:55:06 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 20:10:01 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,20 @@ typedef struct s_data_item
 
 t_data_item	*g_hasharray[SIZE];
 
+
+typedef struct s_free
+{
+	void				*newt;
+	struct s_free		*next_t;
+}t_free;
+
+typedef struct s_free_stc
+{
+	t_free	*free_p;
+}t_free_stc;
+t_free_stc			*init_struct_free(void);
+void				free_one(char *s);
+void				free_all(void *n);
 struct	s_data_item	*search(char *key, struct s_data_item *temp);
 int					stop(void);
 void				sig_handler(int numofsig);

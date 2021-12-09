@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hashmap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 11:51:41 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/09 00:14:40 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 19:46:24 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	insert(char *key, char *data)
 	int				hashindex;
 
 	item = (t_data_item *)malloc(sizeof(t_data_item));
+	free_all(item);
 	item->data = ft_strdup(data);
 	item->key = ft_strdup(key);
 	item->next = NULL;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 13:02:10 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/09 19:05:53 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 19:46:41 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	exe_export(t_cmds *tmp, struct s_data_item *temp)
 	while (tmp->arguments[i])
 	{
 		key = key_export(tmp->arguments[i]);
+		free_all(key);
 		data = valeu_export(tmp->arguments[i]);
 		if (error_export(key, tmp->arguments[i]) == 1)
 		{

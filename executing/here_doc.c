@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 10:45:48 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/09 18:20:06 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 21:18:26 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executing_head.h"
+
+void	free_one(char *s)
+{
+	if (s)
+	{
+		free(s);
+		s = NULL;
+	}
+}
 
 int	file_descriptor(t_cmds *cmds, int zero, int i)
 {
@@ -19,21 +28,26 @@ int	file_descriptor(t_cmds *cmds, int zero, int i)
 	int		fd2;
 	t_cmds	*fl;
 	t_cmds	*tmp1;
-
+	char	*stor_a;
 	tmp1 = cmds;
 	fl = init_stuct();
 	dup2(zero, 0);
-	fd1 = open(ft_itoa(i), O_CREAT | O_RDWR | O_TRUNC, 0644);
+	stor_a = ft_itoa(i);
+	fd1 = open(stor_a, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	while (fl->stop)
 	{
 		s = readline("> ");
 		if (!s || !strcmp(s, tmp1->redrctions->org_name))
+		{
+			free_one(s);
 			break ;
+		}
 		write(fd1, s, ft_strlen(s));
 		write(fd1, "\n", 1);
 		free(s);
 	}
 	close(fd1);
-	fd2 = open(ft_itoa(i), O_RDONLY);
+	fd2 = open(stor_a, O_RDONLY);
+	free(stor_a);
 	return (fd2);
 }

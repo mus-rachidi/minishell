@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 11:47:27 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/06 23:26:54 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 21:37:48 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ t_filerdr	*red_alloc(int i)
 	t_filerdr	*list;
 
 	list = (t_filerdr *)malloc(sizeof(t_filerdr) * i);
+	free_all(list);
 	if (!list)
 	{
 		printf("malloc failed to allocate memory\n");

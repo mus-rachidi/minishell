@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:21:31 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/06 00:16:05 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 21:39:21 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	*get_type_cmnd_ifred(char *line, char **str, int nbr)
 	i = 0;
 	split = NULL;
 	nbr = 0;
-	type = ft_strdup("");
+	type = "";
 	while (line && line[i] == ' ')
 		i++;
 	if (line[i] != '<' && line[i] != '>')

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirection_error.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 10:46:48 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/07 23:40:57 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 21:57:05 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ char	*ft_check_two(t_cmds *tmp1)
 		str_error = ft_strjoin(tmp1->check_error,
 				" Permission denied\n");
 	if (tmp1->multiple == 3)
-		str_error = ft_strjoin(tmp1->redrctions->org_name,
-				" ambiguous redirect\n");
+		str_error = ft_strjoin("", " ambiguous redirect\n");
 	tmp1->check_error = NULL;
 	return (str_error);
 }

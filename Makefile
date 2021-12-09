@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: murachid <murachid@student.42.fr>          +#+  +:+       +#+         #
+#    By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/12 13:27:28 by rel-bour          #+#    #+#              #
-#    Updated: 2021/12/09 18:28:17 by murachid         ###   ########.fr        #
+#    Updated: 2021/12/09 20:43:29 by rel-bour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-CC = gcc  -lreadline -ledit -g  -L /goinfre/murachid/.brew/opt/readline/lib -I /goinfre/murachid/.brew/opt/readline/include
-CFLAGS = -Wall -Wextra -Werror   
+CC = gcc  -lreadline -ledit -g  -L /goinfre/rel-bour/rel-bour/.brew/opt/readline/lib -I /goinfre/rel-bour/rel-bour/.brew/opt/readline/include
+CFLAGS = #-Wall -Wextra -Werror   
 
 SRC = main.c\
 executing/*.c\

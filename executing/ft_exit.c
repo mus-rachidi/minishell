@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:31:51 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/08 21:48:26 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 20:25:34 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ void	message_print_export(char *s, int exit_error)
 
 	i = ft_itoa(exit_error);
 	data = init_stuct();
-	ft_itoa(exit_error);
 	ft_putstr_fd("minishell: export: `", 2);
 	ft_putstr_fd(s, 2);
 	ft_putstr_fd("': not a valid identifier\n", 2);
 	fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0666);
 	ft_putstr_fd(i, fd);
+	free(i);
 }
 
 void	message_print_red(char *s, char *str, int exit_error)
@@ -61,6 +61,7 @@ void	message_print_red(char *s, char *str, int exit_error)
 	print_error(s, str);
 	fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0666);
 	ft_putstr_fd(i, fd);
+	free(i);
 }
 
 void	message_print(char *s, char *str, int exit_error)

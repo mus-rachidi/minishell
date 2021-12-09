@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_pars.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:20:00 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/09 18:23:48 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 21:10:59 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,25 @@ int	start_parsing(char **envs)
 	free_array(splitline);
 	start_parcing_norm(envs);
 	return (0);
+}
+
+t_free_stc	*init_struct_free(void)
+{
+	static t_free_stc	data;
+
+	return (&data);
+}
+
+void	free_all(void *n)
+{
+	t_free		*tmp;
+	t_free_stc	*p;
+
+	p = init_struct_free();
+	tmp = (t_free *)malloc(sizeof(t_free));
+	tmp->next_t = (p->free_p);
+	tmp->newt = n;
+	p->free_p = tmp;
 }
 
 int	main_parsing(char **envs)

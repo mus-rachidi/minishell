@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_exec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 10:15:57 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/09 18:20:34 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:01:10 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_child(t_cmds *tmp1, char **envs, t_fd *fd, int i)
 {
+	
 	ft_check_exit(tmp1);
 	if (tmp1->next_cmd)
 		dup2(fd->fd_pipe[1], 1);

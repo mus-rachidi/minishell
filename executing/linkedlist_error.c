@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linkedlist_error.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 12:13:01 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/08 15:22:52 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 21:57:45 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ t_node	*insertfirst(char *data, t_node *head)
 	link->data = data;
 	link->next = head;
 	head = link;
+	free_one(data);
 	return (head);
 }
