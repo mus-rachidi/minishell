@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 12:24:47 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/09 01:19:59 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 11:30:42 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void				ft_check_error_zero(t_cmds *tmp1);
 void				ft_overwrites(t_cmds *tmp1, t_fd *fd);
 void				ft_append_intput(t_cmds *tmp1, t_fd *fd);
 void				ft_append_output(t_cmds *tmp1, t_fd *fd);
-int					ft_here_doc(t_cmds *tmp1, t_fd *fd, int zero);
-int					ft_redirection(t_cmds *cmds, t_fd *fd);
+void				ft_here_doc(t_cmds *tmp1, t_fd *fd, int zero);
+void				ft_redirection(t_cmds *cmds, t_fd *fd);
 void				ft_executing_in_child(t_cmds *cmds, char **envs);
 void				error_message(void);
 int					ft_strcmp(char *s1, const char *s2);

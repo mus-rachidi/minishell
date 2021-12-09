@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 13:25:01 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/09 02:06:23 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 13:19:04 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ void	ft_tow(int numofsig)
 
 	if (numofsig == SIGINT)
 	{
-		fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0666);
+		fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0666);	
+		ft_putstr_fd("1", fd);
 		buffer = ft_strdup(rl_line_buffer);
 		rl_on_new_line();
 		rl_replace_line("", 1);
 		rl_redisplay();
 		write(2, buffer, ft_strlen(buffer));
 		write(2, "  \nUser@minishell> ", 20);
-		ft_putstr_fd("1", fd);
 		free(buffer);
 		
 	}
@@ -73,13 +73,14 @@ void	ft_tow(int numofsig)
 void	sig_handler(int numofsig)
 {
 	char	*ptr;
+	t_cmds	*fl;
+	fl = init_stuct();
 
 	ptr = NULL;
 	if (check_t_child(ptr) == 1)
 		ft_sgone(numofsig);
 	else
-		ft_tow(numofsig);
-	
+		ft_tow(numofsig);	
 	stop();
 }
 

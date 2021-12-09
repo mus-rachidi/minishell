@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 10:45:48 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/09 01:53:48 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 12:12:43 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	file_descriptor(t_cmds *cmds, int zero)
 	int		fd2;
 	t_cmds	*fl;
 	t_cmds	*tmp1;
-
 	tmp1 = cmds;
 	fl = init_stuct();
 	dup2(zero, 0);
@@ -27,17 +26,13 @@ int	file_descriptor(t_cmds *cmds, int zero)
 	while (fl->stop)
 	{
 		s = readline("> ");
-		printf("%s  \n",s);
-		printf("edscfwsfw	\n");
 		if (!s || !strcmp(s, tmp1->redrctions->org_name))
 			break ;
 		write(fd1, s, ft_strlen(s));
 		write(fd1, "\n", 1);
 		free(s);
 	}
-	if(!fl->stop)
-		return (1);
 	close(fd1);
 	fd2 = open("/tmp/tmp1", O_RDONLY);
-	return (0);
+	return (fd2);
 }
