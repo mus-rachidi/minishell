@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 12:24:47 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/09 22:08:11 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 23:26:23 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ typedef struct s_pipex
 	int		fd;
 	char	**path_split;
 }t_pipex;
+void				ft_util_one(void);
+void				export_util(t_data_item *d, char *data, char *key);
+char				*valeu_export(char *tmp);
+int					error_export(char *key, char *arg);
+char				*key_export(char *tmp);
+char				**init_list(void);
 int					mywrite(void);
 void				mywrite_int(void);
 void				rest_buffer(void);

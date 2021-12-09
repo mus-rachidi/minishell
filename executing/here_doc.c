@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 10:45:48 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/09 22:12:41 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:21:02 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,33 +21,39 @@ void	free_one(char *s)
 	}
 }
 
-int	file_descriptor(t_cmds *cmds, int zero, int i)
+typedef struct s_here_doc
 {
 	char	*s;
 	int		fd1;
 	int		fd2;
-	t_cmds	*fl;
-	t_cmds	*tmp1;
 	char	*stor_a;
+}t_here_doc;
+
+int	file_descriptor(t_cmds *cmds, int zero, int i)
+{
+	t_here_doc	hd;
+	t_cmds		*fl;
+	t_cmds		*tmp1;
+
 	tmp1 = cmds;
 	fl = init_stuct();
 	dup2(zero, 0);
-	stor_a = ft_itoa(i);
-	fd1 = open(stor_a, O_CREAT | O_RDWR | O_TRUNC, 0644);
+	hd.stor_a = ft_itoa(i);
+	hd.fd1 = open(hd.stor_a, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	while (fl->stop)
 	{
-		s = readline("> ");
-		if (!s || !ft_strcmp(s, tmp1->redrctions->org_name))
+		hd.s = readline("> ");
+		if (!hd.s || !ft_strcmp(hd.s, tmp1->redrctions->org_name))
 		{
-			free_one(s);
+			free_one(hd.s);
 			break ;
 		}
-		write(fd1, s, ft_strlen(s));
-		write(fd1, "\n", 1);
-		free(s);
+		write(hd.fd1, hd.s, ft_strlen(hd.s));
+		write(hd.fd1, "\n", 1);
+		free(hd.s);
 	}
-	close(fd1);
-	fd2 = open(stor_a, O_RDONLY);
-	free(stor_a);
-	return (fd2);
+	close(hd.fd1);
+	hd.fd2 = open(hd.stor_a, O_RDONLY);
+	free(hd.stor_a);
+	return (hd.fd2);
 }

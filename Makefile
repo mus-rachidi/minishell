@@ -6,13 +6,13 @@
 #    By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/12 13:27:28 by rel-bour          #+#    #+#              #
-#    Updated: 2021/12/09 22:13:10 by rel-bour         ###   ########.fr        #
+#    Updated: 2021/12/09 22:45:18 by rel-bour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-CC = gcc  -lreadline -ledit -g  -L /goinfre/rel-bour/rel-bour/.brew/opt/readline/lib -I /goinfre/rel-bour/rel-bour/.brew/opt/readline/include
+CC = gcc  -lreadline -ledit -g -L /goinfre/rel-bour/rel-bour/.brew/opt/readline/lib -I /goinfre/rel-bour/rel-bour/.brew/opt/readline/include
 CFLAGS = -Wall -Wextra -Werror   
 
 SRC = main.c\

@@ -6,15 +6,20 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 10:15:57 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/09 22:01:10 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 23:28:58 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executing_head.h"
 
+void	ft_util_one(void)
+{
+	//wait(NULL);
+	mywrite_int();
+}
+
 void	ft_child(t_cmds *tmp1, char **envs, t_fd *fd, int i)
 {
-	
 	ft_check_exit(tmp1);
 	if (tmp1->next_cmd)
 		dup2(fd->fd_pipe[1], 1);
@@ -66,20 +71,27 @@ void	ft_util(t_node	*head)
 	mywrite_int();
 }
 
-void	ft_util_one(void)
+
+void	close_ft(t_fd fd)
 {
-	mywrite_int();
+	if (fd.p)
+		close(fd.p);
 }
+
+typedef struct s_exec_cmd
+{
+	char		*str_error;
+	int			i;
+}t_exec_cmd;
 
 void	exec_cmd_test(t_cmds *cmds, char **envs)
 {
 	t_cmds		*tmp1;
 	t_node		*head;
 	t_fd		fd;
-	char		*str_error;
-	int			i;
+	t_exec_cmd	ec;
 
-	i = 0;
+	ec.i = 0;
 	head = NULL;
 	fd.p = 0;
 	tmp1 = cmds;
@@ -87,13 +99,12 @@ void	exec_cmd_test(t_cmds *cmds, char **envs)
 	{
 		if (pipe(fd.fd_pipe) == -1)
 			exit(1);
-		i++;
-		ft_fork(tmp1, envs, &fd, i);
-		str_error = ft_check_two(tmp1);
-		head = insertfirst(str_error, head);
+		ec.i++;
+		ft_fork(tmp1, envs, &fd, ec.i);
+		ec.str_error = ft_check_two(tmp1);
+		head = insertfirst(ec.str_error, head);
 		free_arg(tmp1);
-		if (fd.p)
-			close(fd.p);
+		close_ft(fd);
 		fd.p = fd.fd_pipe[0];
 		if (tmp1->next_cmd)
 			ft_util_one();
