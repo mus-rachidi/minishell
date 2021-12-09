@@ -6,13 +6,13 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 13:13:43 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/05 12:06:53 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/09 01:30:14 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executing_head.h"
 
-void	ft_redirection(t_cmds *cmds, t_fd *fd)
+int	ft_redirection(t_cmds *cmds, t_fd *fd)
 {
 	t_cmds	*tmp1;
 	int		zero;
@@ -27,9 +27,10 @@ void	ft_redirection(t_cmds *cmds, t_fd *fd)
 		else if (tmp1->redrctions->type == 2)
 			ft_append_output(cmds, fd);
 		else if (tmp1->redrctions->type == 3)
-			ft_here_doc(tmp1, fd, zero);
+			return(ft_here_doc(tmp1, fd, zero));
 		else if (tmp1->redrctions->type == 0)
 			ft_append_intput(tmp1, fd);
 		tmp1->redrctions = tmp1->redrctions->next;
 	}
+	return(0);
 }

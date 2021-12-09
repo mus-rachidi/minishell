@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hashmap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 11:51:41 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/06 23:49:36 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/09 00:14:40 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,19 @@ void	display(t_cmds *tmp, struct s_data_item *temp)
 		i++;
 	}
 }
-void freelist1(t_data_item* head)
+
+void	freelist1(t_data_item *head)
 {
-   t_data_item *tmp;
+	t_data_item	*tmp;
 
-   while (head != NULL)
-    {
-       tmp = head;
-       head = head->next;
-       free(tmp);
-    }
-
+	while (head != NULL)
+	{
+		tmp = head;
+		head = head->next;
+		free(tmp);
+	}
 }
+
 void	insert(char *key, char *data)
 {
 	t_data_item		*temp;
@@ -84,10 +85,6 @@ void	insert(char *key, char *data)
 		}
 		temp->next = item;
 	}
-	// 
-	// free(item->data);
-	// free(item->key);
-	// item = NULL;
 }
 
 struct	s_data_item	*search(char *key, struct s_data_item *temp)
@@ -107,21 +104,4 @@ struct	s_data_item	*search(char *key, struct s_data_item *temp)
 		l++;
 	}
 	return (NULL);
-}
-
-void	list_envs(char **envs)
-{
-	int		i;
-	char	**tmp;
-
-	i = 0;
-	while (envs[i])
-	{
-		if (tmp)
-			tmp = ft_split(envs[i], '=');
-		insert(tmp[0], tmp[1]);
-		if (tmp)
-			free_array(tmp);
-		i++;
-	}
 }

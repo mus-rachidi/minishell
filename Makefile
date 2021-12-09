@@ -6,13 +6,13 @@
 #    By: murachid <murachid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/12 13:27:28 by rel-bour          #+#    #+#              #
-#    Updated: 2021/12/08 14:06:48 by murachid         ###   ########.fr        #
+#    Updated: 2021/12/09 00:16:52 by murachid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-CC = gcc  -lreadline -ledit -g # -L /goinfre/murachid/.brew/opt/readline/lib -I /goinfre/murachid/.brew/opt/readline/include
+CC = gcc  -lreadline -ledit -g  -L /goinfre/murachid/.brew/opt/readline/lib -I /goinfre/murachid/.brew/opt/readline/include
 # -fsanitize=address
 CFLAGS = #-Wall -Wextra -Werror   
 
