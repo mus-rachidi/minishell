@@ -6,14 +6,14 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 12:43:57 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/10 19:28:54 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/10 21:32:50 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEAD_GLOBAL_H
 # define HEAD_GLOBAL_H
 # include "libft/libft.h"
-# define SIZE 30
+# define SIZE 1
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
@@ -56,6 +56,8 @@ typedef struct s_cmds
 	t_filerdr		*redrctions;
 	struct s_cmds	*next_cmd;
 	int				g_check;
+	int				g_check_error;
+	char			*str_error;
 }t_cmds;
 
 typedef struct s_data_item
@@ -105,6 +107,7 @@ t_cmds				*data_if_not_red(t_cmds *test);
 t_cmds				*data_if_red_exist(t_cmds *test, int *ret_value);
 t_cmds				*cmd_alloc(int i);
 t_filerdr			*red_alloc(int i);
+char				*ft_getenv(char *s);
 void				join_red_list(t_filerdr *add_tmp, t_filerdr *src);
-
+void				free_filenames(void);
 #endif

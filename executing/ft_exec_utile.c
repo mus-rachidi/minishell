@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 16:13:18 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/10 19:31:57 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/10 22:19:30 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ int	my_ft_strchr(char *s)
 void	check_exit_command(char *cmd)
 {
 	t_cmds		*fl;
+	int			fd;
+	char		*t;
 
 	fl = init_stuct();
-	if (fl->g_check == 0)
-		message_print(cmd, ": command not found\n", 127);
-	else
-		message_print(cmd, ": command not found\n", 0);
+	fd = open("/tmp/ls", O_WRONLY | O_APPEND ,0666);
+	write(fd, "minishell :" ,ft_strlen("minishel :"));
+	t = ft_strjoin(cmd, ": command not found\n");
+	write(fd, t ,ft_strlen(t));
 }
 
 void	ft_join(t_pipex *pipex, char *cmd)

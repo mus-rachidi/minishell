@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 10:45:48 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/10 19:26:49 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/10 20:04:04 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	file_descriptor(t_cmds *cmds, int zero, int i)
 	fl = init_stuct();
 	dup2(zero, 0);
 	hd.stor_a = ft_itoa(i);
-	hd.fd1 = open(hd.stor_a, O_CREAT | O_RDWR | O_TRUNC, 0644);
+	hd.fd1 = open(ft_strjoin("/tmp/",hd.stor_a), O_CREAT | O_RDWR | O_TRUNC, 0644);
 	while (1)
 	{
 		hd.s = readline("> ");

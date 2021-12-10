@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 19:41:40 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/07 19:42:36 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/10 21:00:41 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,8 @@ void	free_arg(t_cmds *tmp1)
 	}
 }
 
-void	free_and_wait(t_node *head)
+void	free_and_wait()
 {
 	mywait();
 	check_t_child("0");
-	printlist(head);
-	freelist(head);
 }

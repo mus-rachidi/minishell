@@ -6,15 +6,15 @@
 #    By: murachid <murachid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/12 13:27:28 by rel-bour          #+#    #+#              #
-#    Updated: 2021/12/10 19:28:36 by murachid         ###   ########.fr        #
+#    Updated: 2021/12/10 22:03:08 by murachid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-CC = gcc  -lreadline -ledit -g -L /goinfre/rel-bour/rel-bour/.brew/opt/readline/lib -I /goinfre/rel-bour/rel-bour/.brew/opt/readline/include
-
-CFLAGS = -Wall -Wextra -Werror   
+CC = gcc  -lreadline -ledit -g  -L /goinfre/murachid/.brew/opt/readline/lib -I /goinfre/murachid/.brew/opt/readline/include
+#-fsanitize=address
+CFLAGS = #-Wall -Wextra -Werror   
 
 SRC = main.c\
 executing/*.c\
