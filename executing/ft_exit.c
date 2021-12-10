@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:31:51 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/09 20:25:34 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/10 23:00:01 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,13 @@ int	mywrite(void)
 	int		res;
 	int		fd;
 
-	buffer = malloc(3);
+	buffer = malloc(4);
 	fd = open("/tmp/s_code", O_RDONLY, 0666);
 	read(fd, buffer, 3);
 	res = ft_atoi(buffer);
+	open("/tmp/s_code",  O_CREAT | O_WRONLY | O_TRUNC ,0666);
 	free(buffer);
 	return (res);
-}
-
-void	mywrite_int(void)
-{
-	int	fd;
-
-	fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0666);
-	ft_putstr_fd("0", fd);
 }
 
 void	message_print_export(char *s, int exit_error)

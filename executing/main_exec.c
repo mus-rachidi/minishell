@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 10:15:57 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/10 22:20:57 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/10 23:00:03 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	ft_util()
 	data = init_stuct();
 	free_and_wait();
 	data->s_code = mywrite();
-	mywrite_int();
 }
 
 void	close_ft(t_fd fd)
@@ -89,8 +88,7 @@ void printn_file()
 {
 	char	*buffer;
 	int		fd;
-	
-	
+
 	buffer = malloc(3);
 	fd = open("/tmp/ls", O_RDONLY, 0666);
 	while (1)
@@ -103,6 +101,7 @@ void printn_file()
 	free(buffer);
 	open("/tmp/ls",  O_CREAT | O_WRONLY | O_TRUNC ,0666);
 }
+
 void	exec_cmd_test(t_cmds *cmds, char **envs)
 {
 	t_str	exe;
@@ -114,11 +113,10 @@ void	exec_cmd_test(t_cmds *cmds, char **envs)
 	exe.tmp1 = cmds;
 	while (exe.tmp1)
 	{
-		if(exe.tmp1->next_cmd)
-			exe.fl->g_check = 0;
+		if(!exe.tmp1->next_cmd)
+			exe.fl->g_check = 1;
 		if (pipe(exe.fd.fd_pipe) == -1)
 			exit(1);
-		
 		exe.ec.i++;
 		ft_fork(exe.tmp1, envs, &exe.fd, exe.ec.i);
 		exe.fl->str_error = ft_check_two(exe.tmp1);
@@ -131,6 +129,5 @@ void	exec_cmd_test(t_cmds *cmds, char **envs)
 	ft_util();
 	printlist(exe.head);
 	printn_file();
-	
 	freelist(exe.head);
 }
