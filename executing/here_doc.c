@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 10:45:48 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/09 22:21:02 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/10 19:26:49 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	file_descriptor(t_cmds *cmds, int zero, int i)
 	dup2(zero, 0);
 	hd.stor_a = ft_itoa(i);
 	hd.fd1 = open(hd.stor_a, O_CREAT | O_RDWR | O_TRUNC, 0644);
-	while (fl->stop)
+	while (1)
 	{
 		hd.s = readline("> ");
 		if (!hd.s || !ft_strcmp(hd.s, tmp1->redrctions->org_name))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 13:25:01 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/09 23:15:51 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/10 19:29:56 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,15 @@ void	ft_sgone(int numofsig)
 
 void	ft_tow(int numofsig)
 {
-	char	*buffer;
-	int		fd;
+	char		*buffer;
+	int			fd;
+	t_cmds		*fl;
 
+	fl = init_stuct();
 	fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0666);
 	if (numofsig == SIGINT)
 	{
-		ft_putstr_fd("1", fd);
+		fl->s_code = 1;
 		buffer = ft_strdup(rl_line_buffer);
 		rl_on_new_line();
 		rl_replace_line("", 1);
@@ -80,7 +82,6 @@ void	sig_handler(int numofsig)
 		ft_sgone(numofsig);
 	else
 		ft_tow(numofsig);
-	stop();
 }
 
 int	main(int ac, char **av, char **envs)
@@ -97,7 +98,6 @@ int	main(int ac, char **av, char **envs)
 	signal(SIGQUIT, sig_handler);
 	while (1)
 	{
-		fl->stop = 1;
 		main_parsing(envs);
 	}
 	return (0);

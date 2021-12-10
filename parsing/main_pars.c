@@ -3,39 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main_pars.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:20:00 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/09 21:10:59 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/10 19:39:56 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing_head.h"
-
-void	free_filenames(void)
-{
-	t_cmds	*data;
-	t_cmds	*tmp;
-	int		j;
-
-	data = init_stuct();
-	tmp = data;
-	j = 0;
-	if (tmp->filenames)
-	{
-		while (tmp->filenames[j])
-		{
-			free(tmp->filenames[j]);
-			tmp->filenames[j] = NULL;
-			j++;
-		}
-		if (tmp->filenames)
-		{
-			free(tmp->filenames);
-			tmp->filenames = NULL;
-		}
-	}
-}
 
 int	red_syntax_errors(char **splitline)
 {
@@ -103,25 +78,6 @@ int	start_parsing(char **envs)
 	free_array(splitline);
 	start_parcing_norm(envs);
 	return (0);
-}
-
-t_free_stc	*init_struct_free(void)
-{
-	static t_free_stc	data;
-
-	return (&data);
-}
-
-void	free_all(void *n)
-{
-	t_free		*tmp;
-	t_free_stc	*p;
-
-	p = init_struct_free();
-	tmp = (t_free *)malloc(sizeof(t_free));
-	tmp->next_t = (p->free_p);
-	tmp->newt = n;
-	p->free_p = tmp;
 }
 
 int	main_parsing(char **envs)

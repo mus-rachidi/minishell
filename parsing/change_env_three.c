@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   change_env_three.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 11:43:00 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/09 22:12:14 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/10 19:38:49 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing_head.h"
-
-char	*ft_getenv(char *s)
-{
-	struct s_data_item	*p;
-
-	p = NULL;
-	p = search(s, p);
-	if (!p)
-		return (NULL);
-	return (p->data);
-}
 
 char	*tmp_change_qots(char *str, int *j)
 {
