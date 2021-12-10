@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 12:24:47 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/10 21:01:13 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/11 00:23:19 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_pipex
 	int		fd;
 	char	**path_split;
 }t_pipex;
+void				close_ft(t_fd fd);
+void				ft_util(void);
 void				ft_util_one(void);
 void				export_util(t_data_item *d, char *data, char *key);
 char				*valeu_export(char *tmp);

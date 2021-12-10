@@ -1,53 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_exec_util.c                                   :+:      :+:    :+:   */
+/*   main_util_exe_two.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/07 19:41:40 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/10 23:17:02 by murachid         ###   ########.fr       */
+/*   Created: 2021/12/11 00:18:47 by murachid          #+#    #+#             */
+/*   Updated: 2021/12/11 00:23:08 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executing_head.h"
 
-void	mywait(void)
+void	close_ft(t_fd fd)
 {
-	while (1)
-	{
-		if (waitpid(-1, NULL, 0) <= 0)
-			break ;
-	}
+	if (fd.p)
+		close(fd.p);
 }
 
-void	freelist(t_node *head)
+void	ft_util(void)
 {
-	t_node	*tmp;
+	t_cmds	*data;
 
-	while (head != NULL)
-	{
-		tmp = head;
-		head = head->next;
-		free(tmp);
-	}
-}
-
-void	free_arg(t_cmds *tmp1)
-{
-	int	j;
-
-	j = 0;
-	while (tmp1->arguments && tmp1->arguments[j])
-	{
-		free(tmp1->arguments[j]);
-		tmp1->arguments[j] = NULL;
-		j++;
-	}
-}
-
-void	free_and_wait(void)
-{
-	mywait();
-	check_t_child("0");
+	data = init_stuct();
+	free_and_wait();
+	data->s_code = mywrite();
 }

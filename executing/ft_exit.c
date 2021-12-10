@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:31:51 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/10 23:00:01 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/10 23:10:44 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	mywrite(void)
 	fd = open("/tmp/s_code", O_RDONLY, 0666);
 	read(fd, buffer, 3);
 	res = ft_atoi(buffer);
-	open("/tmp/s_code",  O_CREAT | O_WRONLY | O_TRUNC ,0666);
+	open("/tmp/s_code", O_CREAT | O_WRONLY | O_TRUNC, 0666);
 	free(buffer);
 	return (res);
 }

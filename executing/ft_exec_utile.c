@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 16:13:18 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/10 23:03:39 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/10 23:10:16 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ void	check_exit_command(char *cmd)
 	t_cmds		*fl;
 	int			fd;
 	char		*t;
-	int fd1;
+	int			fd1;
 
 	fl = init_stuct();
 	fd = open("/tmp/ls", O_WRONLY | O_APPEND, 0666);
-	fd1 = open("/tmp/s_code", O_WRONLY | O_TRUNC ,0666);
-	write(fd, "minishell :" ,ft_strlen("minishel :"));
+	fd1 = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0666);
+	write(fd, "minishell :", ft_strlen("minishel :"));
 	t = ft_strjoin(cmd, ": command not found\n");
-	write(fd, t ,ft_strlen(t));
-	if(fl->g_check == 1)
+	write(fd, t, ft_strlen(t));
+	if (fl->g_check == 1)
 		ft_putstr_fd("127", fd1);
 	else
 		ft_putstr_fd("0", fd1);
