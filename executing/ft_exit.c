@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:31:51 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/11 01:04:02 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/11 01:37:01 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	mywrite(void)
 	fd = open("/tmp/s_code", O_RDONLY, 0666);
 	read(fd, buffer, 3);
 	res = ft_atoi(buffer);
-	open("/tmp/s_code",  O_WRONLY | O_TRUNC, 0666);
+	open("/tmp/s_code", O_WRONLY | O_TRUNC, 0666);
 	free(buffer);
 	return (res);
 }
@@ -38,7 +38,7 @@ void	message_print_export(char *s, int exit_error)
 	ft_putstr_fd("minishell: export: `", 2);
 	ft_putstr_fd(s, 2);
 	ft_putstr_fd("': not a valid identifier\n", 2);
-	fd = open("/tmp/s_code",  O_WRONLY | O_TRUNC, 0666);
+	fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0666);
 	ft_putstr_fd(i, fd);
 	free(i);
 }
@@ -52,7 +52,7 @@ void	message_print_red(char *s, char *str, int exit_error)
 	i = ft_itoa(exit_error);
 	data = init_stuct();
 	print_error(s, str);
-	fd = open("/tmp/s_code",  O_WRONLY | O_TRUNC, 0666);
+	fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0666);
 	ft_putstr_fd(i, fd);
 	free(i);
 }
