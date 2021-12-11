@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 10:46:48 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/11 01:36:35 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:57:02 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,37 @@ void	print_error(char *a, char *b)
 char	*ft_check_two(t_cmds *tmp1)
 {
 	int		fd;
-	char	*str_error;
+	char	*str_error2;
 
-	fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0666);
-	str_error = NULL;
+	fd = -1;
+	if (!check_file_size())
+		fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0777);
+	else
+		return (NULL);
+	str_error2 = NULL;
 	if (tmp1->multiple == 1)
 	{
-		str_error = ft_strjoin(tmp1->check_error,
+		str_error2 = ft_strjoin(tmp1->check_error,
 				" No such file or directory\n");
-		ft_putstr_fd("1", fd);
+		ft_putnbr_fd(1, fd);
+		ft_putstr_fd("\0", fd);
 	}
 	if (tmp1->multiple == 2)
 	{
-		str_error = ft_strjoin(tmp1->check_error,
+		str_error2 = ft_strjoin(tmp1->check_error,
 				" Permission denied\n");
-		ft_putstr_fd("1", fd);
+		ft_putnbr_fd(1, fd);
+		ft_putstr_fd("\0", fd);
 	}
 	if (tmp1->multiple == 3)
 	{
-		str_error = ft_strjoin("", " ambiguous redirect\n");
-		ft_putstr_fd("1", fd);
+		str_error2 = ft_strjoin("", " ambiguous redirect\n");
+		ft_putnbr_fd(1, fd);
+		ft_putstr_fd("\0", fd);
 	}
 	tmp1->check_error = NULL;
-	return (str_error);
+	close(fd);
+	return (str_error2);
 }
 
 void	ft_check_exit(t_cmds *tmp1)

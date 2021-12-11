@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 12:24:47 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/11 01:32:19 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/11 15:06:40 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ typedef struct s_pipex
 	int		fd;
 	char	**path_split;
 }t_pipex;
-int					check_mywrite(void);
+int					check_file_size(void);
+void				mywait(void);
 void				close_ft(t_fd fd);
 void				ft_util(void);
 void				ft_util_one(void);

@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 16:13:18 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/11 01:28:30 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:45:35 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,18 @@ void	check_exit_command(char *cmd)
 	int			fd1;
 
 	fl = init_stuct();
-	fd = open("/tmp/ls", O_WRONLY | O_APPEND, 0666);
-	fd1 = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0666);
+	fd1 = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0777);
+	fd = open("/tmp/ls", O_WRONLY | O_APPEND, 0777);
 	write(fd, "minishell :", ft_strlen("minishel :"));
 	t = ft_strjoin(cmd, ": command not found\n");
 	write(fd, t, ft_strlen(t));
 	if (fl->g_check == 1)
-		ft_putstr_fd("127", fd1);
+		ft_putnbr_fd(127, fd1);
 	else
-		ft_putstr_fd("0", fd1);
+		ft_putnbr_fd(0, fd1);
+	ft_putstr_fd("\0", fd1);
+	close (fd);
+	close (fd1);
 }
 
 void	ft_join(t_pipex *pipex, char *cmd)
@@ -69,4 +72,5 @@ void	ft_join(t_pipex *pipex, char *cmd)
 	}
 	if (pipex->fd == -1)
 		check_exit_command(cmd);
+	close (pipex->fd);
 }

@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 13:09:22 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/11 03:26:51 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:52:58 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 void	message_print_unset(char *s, int exit_error)
 {	
-	t_cmds	*data;
 	int		fd;
-	char	*i;
+	int		fd1;
+	char	*t;
 
-	i = ft_itoa(exit_error);
-	data = init_stuct();
-	ft_putstr_fd("minishell: unset: `", 2);
-	ft_putstr_fd(s, 2);
-	ft_putstr_fd("': not a valid identifier\n", 2);
-	fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0666);
-	ft_putstr_fd(i, fd);
-	free(i);
+	fd1 = open("/tmp/ls", O_WRONLY | O_APPEND, 0777);
+	write(fd1, "minishell :", ft_strlen("minishel :"));
+	t = ft_strjoin(s, "': not a valid identifier\n");
+	write(fd1, t, ft_strlen(t));
+	fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0777);
+	ft_putnbr_fd(exit_error, fd);
+	ft_putstr_fd("\0", fd);
+	close (fd);
+	close(fd1);
 }
 
 int	error_unset(char *key)
@@ -44,10 +45,7 @@ int	error_unset(char *key)
 		if (ft_isalpha(key[i]) == 1 || ft_isnum(key[i]) == 1 || key[i] == '_')
 			i++;
 		else
-		{
-			message_print_unset(keyex, 1);
-		
-		}
+			message_print_unset(key, 1);
 	}
 	return (0);
 }

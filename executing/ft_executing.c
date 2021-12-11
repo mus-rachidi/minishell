@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 14:14:41 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/11 01:43:53 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:48:17 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,13 @@
 
 char	*ft_path_util(t_pipex *pipex, char *a, char *cmd)
 {
-	int		c;
-
-	c = 0;
-	c = check_mywrite();
 	if (cmd)
 	{
 		ft_join(pipex, cmd);
 		cmd = pipex->bin;
 		return (pipex->bin);
 	}
-	else if (!cmd && !a && !c)
+	else if (!cmd && !a && !check_file_size())
 		message_print(cmd, ": No such file or directory\n", 127);
 	return (NULL);
 }
@@ -49,7 +45,7 @@ char	*ft_path(char *cmd, char *a)
 			break ;
 		}
 	}
-	if (!temp && !check_mywrite())
+	if (!temp && !check_file_size())
 	{
 		message_print(cmd, ": No such file or directory\n", 127);
 		return (NULL);
@@ -61,16 +57,13 @@ char	*ft_path(char *cmd, char *a)
 void	exute_f(t_cmds *cmd, char *envs[])
 {
 	char	*a;
-	int		c;
 
-	c = 0;
-	c = check_mywrite();
 	a = NULL;
 	if (cmd->redrctions)
 		a = cmd->redrctions->name;
 	if (!access(cmd->type, F_OK) && !ft_strncmp(cmd->type, "/", 1))
 	{
-		if (execve(cmd->type, cmd->all, envs) && !c)
+		if (execve(cmd->type, cmd->all, envs) && !check_file_size())
 			message_print(cmd->type, " is a directory\n", 127);
 		else
 			exit(0);
@@ -85,21 +78,18 @@ void	exute_f(t_cmds *cmd, char *envs[])
 
 void	exec_cmd(t_cmds *cmd, char *envs[])
 {
-	int		c;
-
-	c = 0;
-	c = check_mywrite();
-	if (((!ft_strncmp(".", cmd->type, 1) || !ft_strncmp(
-					"/", cmd->type, 1)) && access(cmd->type, F_OK)) && !c)
+	if (((!ft_strncmp(".", cmd->type, 1) || !ft_strncmp("/",
+					cmd->type, 1)) && access(cmd->type, F_OK))
+		&& !check_file_size())
 		message_print(cmd->type, " No such file or directory\n", 127);
 	else if ((!ft_strcmp("./", cmd->type) || !ft_strcmp(
-				"../", cmd->type)) && !c)
+				"../", cmd->type)) && !check_file_size())
 		message_print(cmd->type, " is a directory\n", 126);
 	else if ((!ft_strncmp("./", cmd->type, 2)
-			&& !access(cmd->type, F_OK)) && !c)
+			&& !access(cmd->type, F_OK)) && !check_file_size())
 	{
 		if ((execve(cmd->type, cmd->all, envs)
-				&& !access(cmd->type, X_OK)) && !c)
+				&& !access(cmd->type, X_OK)) && !check_file_size())
 			message_print(cmd->type, " Permission denied\n", 0);
 		else
 			exit(0);

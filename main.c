@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 13:25:01 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/11 00:52:26 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:45:18 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,19 @@ void	ft_sgone(int numofsig)
 
 	if (numofsig == SIGINT)
 	{
-		fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0666);
+		fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0777);
 		write(2, "\n", 1);
-		ft_putstr_fd("130", fd);
+		ft_putnbr_fd(130, fd);
+		ft_putstr_fd("\0", fd);
+		close (fd);
 	}
 	if (numofsig == SIGQUIT)
 	{
-		fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0666);
+		fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0777);
 		write(2, "Quit: 3\n", 9);
-		ft_putstr_fd("131", fd);
+		ft_putnbr_fd(131, fd);
+		ft_putstr_fd("\0", fd);
+		close (fd);
 	}
 }
 
@@ -51,7 +55,7 @@ void	ft_tow(int numofsig)
 	t_cmds		*fl;
 
 	fl = init_stuct();
-	fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0666);
+	fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0777);
 	if (numofsig == SIGINT)
 	{
 		fl->s_code = 1;
@@ -62,6 +66,7 @@ void	ft_tow(int numofsig)
 		write(2, buffer, ft_strlen(buffer));
 		write(2, "  \nUser@minishell> ", 20);
 		free(buffer);
+		close (fd);
 	}
 	if (numofsig == SIGQUIT)
 	{
@@ -88,13 +93,16 @@ int	main(int ac, char **av, char **envs)
 {
 	t_cmds		*fl;
 	int			fd;
+	int			fd1;
 
 	ac = 0;
 	av = NULL;
 	fl = init_stuct();
 	list_envs(envs);
-	open("/tmp/ls", O_CREAT | O_WRONLY | O_TRUNC, 0666);
-	fd = open("/tmp/s_code", O_CREAT | O_WRONLY | O_TRUNC, 0666);
+	fd = open("/tmp/ls", O_CREAT | O_WRONLY | O_TRUNC, 0777);
+	fd1 = open("/tmp/s_code", O_CREAT | O_WRONLY | O_TRUNC, 0777);
+	close (fd);
+	close (fd1);
 	signal(SIGINT, sig_handler);
 	signal(SIGQUIT, sig_handler);
 	while (1)

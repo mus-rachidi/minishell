@@ -6,11 +6,26 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 10:15:57 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/11 00:56:19 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:56:18 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executing_head.h"
+
+typedef struct s_exec_cmd
+{
+	int			i;
+}t_exec_cmd;
+
+typedef struct s_str
+{
+	t_cmds		*tmp1;
+	t_node		*head;
+	t_fd		fd;
+	int			fd1;
+	t_exec_cmd	ec;
+	t_cmds		*fl;	
+}t_str;
 
 void	ft_child(t_cmds *tmp1, char **envs, t_fd *fd, int i)
 {
@@ -55,28 +70,15 @@ void	ft_fork(t_cmds *tmp1, char **envs, t_fd *fd, int i)
 		exec_built(tmp1);
 }
 
-typedef struct s_exec_cmd
-{
-	int			i;
-}t_exec_cmd;
-
-typedef struct s_str
-{
-	t_cmds		*tmp1;
-	t_node		*head;
-	t_fd		fd;
-	t_exec_cmd	ec;
-	t_cmds		*fl;	
-}t_str;
-
 void	printn_file(void)
 {
 	char	*buffer;
 	int		fd;
+	int		fd1;
 	int		r;
 
 	buffer = malloc(3);
-	fd = open("/tmp/ls", O_RDONLY, 0666);
+	fd = open("/tmp/ls", O_RDONLY, 0777);
 	while (1)
 	{
 		r = read(fd, buffer, 1);
@@ -85,13 +87,21 @@ void	printn_file(void)
 		printf("%c", buffer[0]);
 	}
 	free(buffer);
-	open("/tmp/ls", O_CREAT | O_WRONLY | O_TRUNC, 0666);
+	buffer = NULL;
+	fd1 = open("/tmp/ls", O_CREAT | O_WRONLY | O_TRUNC, 0777);
+	close(fd);
+	close(fd1);
 }
 
 void	tools_exec(t_str exe)
 {
-	ft_util();
+	t_cmds	*data;
+
+	mywait();
+	data = init_stuct();
+	check_t_child("0");
 	printlist(exe.head);
+	data->s_code = mywrite();
 	printn_file();
 	freelist(exe.head);
 }
@@ -105,6 +115,7 @@ void	exec_cmd_test(t_cmds *cmds, char **envs)
 	exe.head = NULL;
 	exe.fd.p = 0;
 	exe.tmp1 = cmds;
+	exe.fl->s_code = 0;
 	while (exe.tmp1)
 	{
 		if (!exe.tmp1->next_cmd)
@@ -113,8 +124,8 @@ void	exec_cmd_test(t_cmds *cmds, char **envs)
 			exit(1);
 		exe.ec.i++;
 		ft_fork(exe.tmp1, envs, &exe.fd, exe.ec.i);
-		exe.fl->str_error = ft_check_two(exe.tmp1);
-		exe.head = insertfirst(exe.fl->str_error, exe.head);
+		exe.fl->str_error1 = ft_check_two(exe.tmp1);
+		exe.head = insertfirst(exe.fl->str_error1, exe.head);
 		free_arg(exe.tmp1);
 		close_ft(exe.fd);
 		exe.fd.p = exe.fd.fd_pipe[0];

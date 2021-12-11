@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 12:43:57 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/10 21:32:50 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:41:18 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ typedef struct s_cmds
 	struct s_cmds	*next_cmd;
 	int				g_check;
 	int				g_check_error;
-	char			*str_error;
+	char			*str_error1;
+	int				t_code;
 }t_cmds;
 
 typedef struct s_data_item

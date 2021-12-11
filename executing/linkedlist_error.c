@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linkedlist_error.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 12:13:01 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/09 21:57:45 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/11 14:39:16 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	printlist(t_node *head)
 	ptr = head;
 	while (ptr != NULL)
 	{
-		if (ptr->data)
+		if (ptr->data && !check_file_size())
 			message_print_red("", ptr->data, 1);
 		ptr = ptr->next;
 	}

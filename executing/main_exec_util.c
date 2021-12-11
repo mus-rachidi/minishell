@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 19:41:40 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/10 23:17:02 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:10:57 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,4 @@ void	free_arg(t_cmds *tmp1)
 		tmp1->arguments[j] = NULL;
 		j++;
 	}
-}
-
-void	free_and_wait(void)
-{
-	mywait();
-	check_t_child("0");
 }
