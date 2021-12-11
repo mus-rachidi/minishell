@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_executing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 14:14:41 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/09 21:16:49 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/11 01:31:31 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 char	*ft_path_util(t_pipex *pipex, char *a, char *cmd)
 {
+	int		c;
+
+	c = 0;
+	c = check_mywrite();
 	if (cmd)
 	{
 		ft_join(pipex, cmd);
 		cmd = pipex->bin;
 		return (pipex->bin);
 	}
-	else if (!cmd && !a)
+	else if (!cmd && !a && !c)
 		message_print(cmd, ": No such file or directory\n", 127);
 	return (NULL);
 }
@@ -30,7 +34,10 @@ char	*ft_path(char *cmd, char *a)
 	int					i;
 	struct s_data_item	*temp;
 	t_pipex				pipex;
+	int		c;
 
+	c = 0;
+	c = check_mywrite();
 	temp = NULL;
 	i = 0;
 	while (i < SIZE)
@@ -45,7 +52,7 @@ char	*ft_path(char *cmd, char *a)
 			break ;
 		}
 	}
-	if (!temp)
+	if (!temp && !c)
 	{
 		message_print(cmd, ": No such file or directory\n", 127);
 		return (NULL);
@@ -57,13 +64,16 @@ char	*ft_path(char *cmd, char *a)
 void	exute_f(t_cmds *cmd, char *envs[])
 {
 	char	*a;
+	int		c;
 
+	c = 0;
+	c = check_mywrite();
 	a = NULL;
 	if (cmd->redrctions)
 		a = cmd->redrctions->name;
 	if (!access(cmd->type, F_OK) && !ft_strncmp(cmd->type, "/", 1))
 	{
-		if (execve(cmd->type, cmd->all, envs))
+		if (execve(cmd->type, cmd->all, envs) && !c)
 			message_print(cmd->type, " is a directory\n", 127);
 		else
 			exit(0);
@@ -75,18 +85,35 @@ void	exute_f(t_cmds *cmd, char *envs[])
 		exit(0);
 	}
 }
+int	check_mywrite(void)
+{
+	char	*buffer;
+	int		res;
+	int		fd;
+
+	buffer = malloc(4);
+	fd = open("/tmp/s_code", O_RDONLY, 0666);
+	read(fd, buffer, 3);
+	res = ft_atoi(buffer);
+	free(buffer);
+	return (res);
+}
 
 void	exec_cmd(t_cmds *cmd, char *envs[])
 {
-	if ((!ft_strncmp(".", cmd->type, 1)
-			|| !ft_strncmp("/", cmd->type, 1)) && access(cmd->type, F_OK))
+	int		c;
+
+	c = 0;
+	c = check_mywrite();
+	if (((!ft_strncmp(".", cmd->type, 1)
+			|| !ft_strncmp("/", cmd->type, 1)) && access(cmd->type, F_OK)) && !c)
 		message_print(cmd->type, " No such file or directory\n", 127);
-	else if (!ft_strcmp("./", cmd->type) || !ft_strcmp("../", cmd->type))
+	else if ((!ft_strcmp("./", cmd->type) || !ft_strcmp("../", cmd->type)) && !c)
 		message_print(cmd->type, " is a directory\n", 126);
-	else if (!ft_strncmp("./", cmd->type, 2) && !access(cmd->type, F_OK))
+	else if ((!ft_strncmp("./", cmd->type, 2) && !access(cmd->type, F_OK))&& !c)
 	{
-		if (execve(cmd->type, cmd->all, envs) && !access(cmd->type, X_OK))
-			message_print(cmd->type, " Permission denied\n", 1);
+		if ((execve(cmd->type, cmd->all, envs) && !access(cmd->type, X_OK)) && !c)
+			message_print(cmd->type, " Permission denied\n", 0);
 		else
 			exit(0);
 	}
