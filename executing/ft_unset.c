@@ -6,11 +6,27 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 13:09:22 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/10 20:21:21 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/11 03:26:51 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executing_head.h"
+
+void	message_print_unset(char *s, int exit_error)
+{	
+	t_cmds	*data;
+	int		fd;
+	char	*i;
+
+	i = ft_itoa(exit_error);
+	data = init_stuct();
+	ft_putstr_fd("minishell: unset: `", 2);
+	ft_putstr_fd(s, 2);
+	ft_putstr_fd("': not a valid identifier\n", 2);
+	fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0666);
+	ft_putstr_fd(i, fd);
+	free(i);
+}
 
 int	error_unset(char *key)
 {
@@ -19,7 +35,7 @@ int	error_unset(char *key)
 	i = 0;
 	if (key[i] != '_' && (ft_isalpha(key[i]) == 0))
 	{
-		printf("minishell: unset: `%s': not a valid identifier\n", key);
+		message_print_unset(key, 1);
 		return (1);
 	}
 	i++;
@@ -29,8 +45,8 @@ int	error_unset(char *key)
 			i++;
 		else
 		{
-			printf("minishell: unset: `%s': not a valid identifier\n", key);
-			return (1);
+			message_print_unset(keyex, 1);
+		
 		}
 	}
 	return (0);
