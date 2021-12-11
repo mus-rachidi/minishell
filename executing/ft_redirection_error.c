@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 10:46:48 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/11 18:57:02 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/11 23:22:34 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,37 +19,38 @@ void	print_error(char *a, char *b)
 	ft_putstr_fd(b, 2);
 }
 
+char	*print_e(int fd, int c, char *s, char *s1)
+{
+	char	*str_error2;
+
+	str_error2 = ft_strjoin(s, s1);
+	if (!c)
+		ft_putnbr_fd(1, fd);
+	ft_putstr_fd("\0", fd);
+	return (str_error2);
+}
+
 char	*ft_check_two(t_cmds *tmp1)
 {
 	int		fd;
 	char	*str_error2;
+	int		c;
 
+	c = 0;
 	fd = -1;
 	if (!check_file_size())
+	{
+		c = 1;
 		fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0777);
-	else
-		return (NULL);
+	}
 	str_error2 = NULL;
 	if (tmp1->multiple == 1)
-	{
-		str_error2 = ft_strjoin(tmp1->check_error,
+		str_error2 = print_e(fd, c, tmp1->check_error,
 				" No such file or directory\n");
-		ft_putnbr_fd(1, fd);
-		ft_putstr_fd("\0", fd);
-	}
 	if (tmp1->multiple == 2)
-	{
-		str_error2 = ft_strjoin(tmp1->check_error,
-				" Permission denied\n");
-		ft_putnbr_fd(1, fd);
-		ft_putstr_fd("\0", fd);
-	}
+		str_error2 = print_e(fd, c, tmp1->check_error, " Permission denied\n");
 	if (tmp1->multiple == 3)
-	{
-		str_error2 = ft_strjoin("", " ambiguous redirect\n");
-		ft_putnbr_fd(1, fd);
-		ft_putstr_fd("\0", fd);
-	}
+		str_error2 = print_e(fd, c, "", " ambiguous redirect\n");
 	tmp1->check_error = NULL;
 	close(fd);
 	return (str_error2);
@@ -84,27 +85,6 @@ char	*ft_check_error_two(t_cmds *cmds)
 	}
 	else if (cmds->redrctions
 		&& access(cmds->redrctions->name, W_OK | R_OK) == -1)
-	{
-		cmds->multiple = 2;
-		return (cmds->redrctions->name);
-	}
-	return (NULL);
-}
-
-char	*ft_check_error_three(t_cmds *cmds)
-{
-	DIR	*dir;
-
-	dir = NULL;
-	if (cmds->redrctions)
-		dir = opendir(cmds->redrctions->name);
-	if (dir)
-	{
-		cmds->multiple = 1;
-		return (cmds->redrctions->name);
-	}
-	if ((cmds->redrctions
-			&& access(cmds->redrctions->name, W_OK | R_OK) == -1))
 	{
 		cmds->multiple = 2;
 		return (cmds->redrctions->name);
