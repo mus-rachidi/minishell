@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 13:09:22 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/11 18:52:58 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/11 23:35:21 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	message_print_unset(char *s, int exit_error)
 	fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0777);
 	ft_putnbr_fd(exit_error, fd);
 	ft_putstr_fd("\0", fd);
+	free_one(t);
 	close (fd);
 	close(fd1);
 }

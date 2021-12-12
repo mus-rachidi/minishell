@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 10:46:48 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/11 23:22:34 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/12 01:08:24 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,7 @@ void	ft_check_exit(t_cmds *tmp1)
 
 char	*ft_check_error_two(t_cmds *cmds)
 {
-	DIR	*dir;
-
-	dir = NULL;
-	if (cmds->redrctions)
-		dir = opendir(cmds->redrctions->name);
 	if (access(cmds->redrctions->name, F_OK) == -1)
-	{
-		cmds->multiple = 1;
-		return (cmds->redrctions->name);
-	}
-	if (access(cmds->redrctions->name, F_OK) == -1 && (cmds->redrctions && dir))
 	{
 		cmds->multiple = 1;
 		return (cmds->redrctions->name);

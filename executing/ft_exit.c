@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:31:51 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/11 18:51:58 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/12 00:21:03 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@ typedef struct s_writ
 	int		fd;
 	int		fd1;
 	int		r;
-	char	*s;	
+	char	*s;
+	char	*tmp_f;
 }t_writ;
 
 int	mywrite(void)
 {
 	t_writ		a;
 
-	a.s = ft_strdup("");
+	a.s = ft_strdup("\0");
 	a.buffer = malloc(2);
 	a.fd = open("/tmp/s_code", O_RDONLY);
 	while (1)
@@ -34,15 +35,20 @@ int	mywrite(void)
 		a.r = read(a.fd, a.buffer, 1);
 		a.buffer[1] = '\0';
 		if (a.r <= 0)
+		{
+			free_one(a.s);
 			break ;
+		}
+		a.tmp_f = a.s;
 		a.s = ft_strjoin(a.s, a.buffer);
+		free_one(a.tmp_f);
+		a.tmp_f = NULL;
 	}
 	a.res = ft_atoi(a.s);
 	a.fd1 = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0777);
 	free(a.buffer);
 	a.buffer = NULL;
-	close(a.fd);
-	close(a.fd1);
+	close_two(a.fd, a.fd1);
 	return (a.res);
 }
 
@@ -86,19 +92,15 @@ int	check_file_size(void)
 {
 	char	*check;
 	int		fd;
+	int		ret;
 
 	check = malloc(3);
 	fd = open("/tmp/s_code", O_RDONLY);
 	if (read(fd, check, 3) == 0)
-	{
-		close (fd);
-		return (0);
-	}	
+		ret = 0;
 	else
-	{
-		close (fd);
-		return (1);
-	}
-	free(check);
-	check = NULL;
+		ret = 1;
+	free_one(check);
+	close (fd);
+	return (ret);
 }

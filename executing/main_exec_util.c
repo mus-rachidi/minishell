@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 19:41:40 by murachid          #+#    #+#             */
-/*   Updated: 2021/12/11 16:10:57 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/12 00:18:12 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,26 @@
 
 void	mywait(void)
 {
+	t_cmds	*fl;
+	int		a;
+	int		fd;
+	int		status;
+
+	fl = init_stuct();
 	while (1)
 	{
-		if (waitpid(-1, NULL, 0) <= 0)
+		if (waitpid(-1, &status, 0) <= 0)
 			break ;
+	}
+	if (WIFEXITED(status))
+	{	
+		a = WEXITSTATUS(status);
+		if (a == 1)
+		{
+			fd = open("/tmp/s_code", O_WRONLY | O_TRUNC, 0777);
+			ft_putnbr_fd(a, fd);
+			close(fd);
+		}
 	}
 }
 

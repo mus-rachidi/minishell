@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   change_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 21:58:28 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/09 22:11:31 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/12/12 00:31:14 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ char	*change_env_no_qots(char *str, int *j, int j2)
 		str = status_env_ret(ev.tmp, str, *j);
 		free(ev.ret);
 		(*j) = (j2 + (nbr_len(data->s_code) - 1));
-		data->s_code = 0;
 		return (str);
 	}
 	return (ret_chng_env(ev, j, str, j2));

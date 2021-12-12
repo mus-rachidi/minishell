@@ -6,7 +6,7 @@
 /*   By: murachid <murachid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 11:43:00 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/12/10 19:38:49 by murachid         ###   ########.fr       */
+/*   Updated: 2021/12/12 00:31:11 by murachid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ char	*change_env_half_qots(char *str, int *j, int j2)
 		str = status_env_ret_qts(evq.tmp, str, *j);
 		free(evq.ret);
 		(*j) = (j2 + (nbr_len(data->s_code) - 1));
-		data->s_code = 0;
 		return (str);
 	}
 	return (ret_change_env_qts(evq, j, str, j2));
